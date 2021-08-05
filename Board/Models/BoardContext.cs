@@ -4,9 +4,9 @@ namespace Board.Models
 {
   public class BoardContext : DbContext
   {
-    public DbSet<Category> Topics { get; set; }
-    public DbSet<Item> Posts { get; set; }
-    public DbSet<CategoryItem> TopicPost { get; set; }
+    public DbSet<Topic> Topics { get; set; }
+    public DbSet<Post> Posts { get; set; }
+    public DbSet<TopicPost> TopicPost { get; set; }
 
     public BoardContext(DbContextOptions options) : base(options) { }
 
