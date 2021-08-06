@@ -38,7 +38,7 @@ namespace Board.Controllers
     {
       var thisTopic = _db.Topics
           .Include(topic => topic.JoinEntities)
-          .ThenInclude(join => join.Item)
+          .ThenInclude(join => join.Post)
           .FirstOrDefault(topic => topic.TopicId == id);
       return View(thisTopic);
     }

@@ -23,7 +23,7 @@ namespace Board.Controllers
     }
     public ActionResult Create()
     {
-      ViewBag.TopicId = new SelectList(_db.Categories, "TopicId", "Name");
+      ViewBag.TopicId = new SelectList(_db.Topics, "TopicId", "Name");
       return View();
     }
 
@@ -52,7 +52,7 @@ namespace Board.Controllers
     public ActionResult Edit(int id)
     {
       var thisPost = _db.Posts.FirstOrDefault(post => post.PostId == id);
-      ViewBag.TopicId = new SelectList(_db.Categories, "TopicId", "Name");
+      ViewBag.TopicId = new SelectList(_db.Topics, "TopicId", "Name");
       return View(thisPost);
     }
 
@@ -71,7 +71,7 @@ namespace Board.Controllers
     public ActionResult AddTopic(int id)
     {
       var thisPost = _db.Posts.FirstOrDefault(post => post.PostId == id);
-      ViewBag.TopicId = new SelectList(_db.Categories, "TopicId", "Name");
+      ViewBag.TopicId = new SelectList(_db.Topics, "TopicId", "Name");
       return View(thisPost);
     }
 
@@ -111,22 +111,22 @@ namespace Board.Controllers
       return RedirectToAction("Index");
     }
 
-    [HttpGet("/posts/{postId}/statusComplete")]
-    public ActionResult StatusComplete(int postId)
-    {
-      Post post = _db.Posts.FirstOrDefault(post => post.PostId == postId);
-      post.Status = true;
-      _db.SaveChanges();
-      return RedirectToAction("Index");
-    }
+    // [HttpGet("/posts/{postId}/statusComplete")]
+    // public ActionResult StatusComplete(int postId)
+    // {
+    //   Post post = _db.Posts.FirstOrDefault(post => post.PostId == postId);
+    //   post.Status = true;
+    //   _db.SaveChanges();
+    //   return RedirectToAction("Index");
+    // }
 
-    [HttpGet("/posts/{postId}/statusIncomplete")]
-    public ActionResult StatusIncomplete(int postId)
-    {
-      Post post = _db.Posts.FirstOrDefault(post => post.PostId == postId);
-      post.Status = false;
-      _db.SaveChanges();
-      return RedirectToAction("Index");
-    }
+    // [HttpGet("/posts/{postId}/statusIncomplete")]
+    // public ActionResult StatusIncomplete(int postId)
+    // {
+    //   Post post = _db.Posts.FirstOrDefault(post => post.PostId == postId);
+    //   post.Status = false;
+    //   _db.SaveChanges();
+    //   return RedirectToAction("Index");
+    // }
   }
 }
