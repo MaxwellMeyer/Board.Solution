@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@model ToDoList.Models.Post
+
+<h2>Edit</h2>
+
+<h4>Edit this Post: @Html.DisplayFor(model => model.Body)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.PostId)
+
+  @Html.LabelFor(model => model.Body)
+  @Html.EditorFor(model => model.Body)
+
+  @Html.Label("Select topic")
+  @Html.DropDownList("TopicId")
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>

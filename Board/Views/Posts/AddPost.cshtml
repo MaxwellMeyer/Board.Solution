@@ -1,0 +1,21 @@
+@* @{
+  Layout = "_Layout";
+  }
+
+  @model Board.Models.Post
+
+  <h2>Add a topic</h2>
+
+  <h4>Add a topic to this task: @Html.DisplayFor(model => model.Description)</h4>
+
+  @using (Html.BeginForm())
+  {
+  @Html.HiddenFor(model => model.PostId)
+
+  @Html.Label("Select topic")
+  @Html.DropDownList("TopicId")
+
+  <input type="submit" value="Save" />
+  }
+
+  <p>@Html.ActionLink("Back to list", "Index")</p> *@
