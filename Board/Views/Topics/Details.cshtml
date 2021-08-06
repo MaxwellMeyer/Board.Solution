@@ -1,0 +1,28 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Board.Models.Topic;
+
+<h2>Topic Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+@if (@Model.JoinEntities.Count == 0)
+{
+  <p>This topic does not contain any posts yet :(</p>
+}
+else
+{
+  <h4>Posts within this topic:</h4>
+  <ul>
+  @foreach (var join in Model.JoinEntities)
+    {
+      <li>@join.Post.Body</li>
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to topics", "Index")</p>
+<p>@Html.ActionLink("Edit Topic", "Edit", new { id = Model.TopicId })</p>
+<p>@Html.ActionLink("Delete Topic", "Delete", new { id = Model.TopicId })</p>

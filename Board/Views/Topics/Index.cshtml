@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Board.Models;
+
+<h1>Topics</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No topics have been added yet!</h3>
+}
+
+
+@foreach (Topic topic in Model)
+{
+  <li>@Html.ActionLink($"{topic.Title}", "Details", new { id = topic.TopicId })</li>
+}
+
+
+<p>@Html.ActionLink("Add new topic", "Create")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
