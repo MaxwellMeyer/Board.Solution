@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Board.Models.Topic
+
+<h4>Add a new Topic:</h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Title)
+  @Html.TextBoxFor(model => model.Title)
+  <input type="submit" value="Add new topic" />
+}
+<p>@Html.ActionLink("Show all topics", "Index")</p>
