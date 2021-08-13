@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Board.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Board
 {
@@ -28,21 +29,25 @@ namespace Board
       services.AddEntityFrameworkMySql()
           .AddDbContext<BoardContext>(options => options
           .UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
+      services.AddIdentity<ApplicationUser, IdentityRole>()
+            .AddEntityFrameworkStores<BoardContext>()
+            .AddDefaultTokenProviders();
     }
     public void Configure(IApplicationBuilder app)
     {
       app.UseDeveloperExceptionPage();
-      app.UseStaticFiles();
+      app.UseAuthentication();
       app.UseRouting();
+      app.UseAuthorization();
 
       app.UseEndpoints(routes =>
       {
         routes.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
       });
-
+      app.UseStaticFiles();
       app.Run(async (context) =>
       {
-        await context.Response.WriteAsync("Hello World!");
+        await context.Response.WriteAsync("Helloooo World!");
       });
     }
   }
