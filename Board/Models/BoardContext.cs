@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Board.Models
 {
-  public class BoardContext : DbContext
+  public class BoardContext : IdentityDbContext<ApplicationUser>
   {
     public DbSet<Topic> Topics { get; set; }
     public DbSet<Post> Posts { get; set; }
